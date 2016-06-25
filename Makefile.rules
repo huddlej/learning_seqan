@@ -1,0 +1,18 @@
+SRC=../src
+CXX=g++
+CXXFLAGS+=-I../seqan/include -std=gnu++11 -DSEQAN_HAS_ZLIB=1
+LDFLAGS+=-lz
+
+default: all
+all: main
+
+main: main.o
+	$(CXX) $(LDFLAGS) -o $@ $<
+
+%.o: $(SRC)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+clean:
+	rm -f *.o main
+
+.PHONY: default all clean
