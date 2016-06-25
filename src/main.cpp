@@ -27,6 +27,10 @@ int main()
         BamHeader header;
         readHeader(header, bamFileIn);
 
+        // Get BAM context.
+        typedef FormattedFileContext<BamFileIn, void>::Type TBamContext;
+        TBamContext const & bamContext = context(bamFileIn);
+
         // Copy records.
         BamAlignmentRecord record;
         unsigned query_position;
@@ -58,9 +62,9 @@ int main()
                         gap_sequence = infix(query_sequence, query_position, query_position + record.cigar[i].count);
 
                         BedRecord<Bed5> gap_record;
-                        gap_record.ref = record.qName;
-                        gap_record.beginPos = query_position;
-                        gap_record.endPos = query_position + record.cigar[i].count;
+                        gap_record.ref = contigNames(bamContext)[record.rID];
+                        gap_record.beginPos = target_position;
+                        gap_record.endPos = target_position + 1;
                         gap_record.name = gap_sequence;
                         gap_record.score = record.cigar[i].count;
                         writeRecord(out, gap_record);
