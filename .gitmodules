@@ -1,5 +1,5 @@
 [submodule "seqan"]
-	path = seqan
+	path = dist/seqan
 	url = https://github.com/seqan/seqan.git
 [submodule "dist/tclap-1.2.1"]
 	path = dist/tclap-1.2.1
