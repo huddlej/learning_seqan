@@ -1,10 +1,13 @@
 SRC=../src
 CXX=g++
-CXXFLAGS+=-I../seqan/include -std=gnu++11 -DSEQAN_HAS_ZLIB=1
+CXXFLAGS+=-I../seqan/include -I../include -std=gnu++11 -DSEQAN_HAS_ZLIB=1
 LDFLAGS+=-lz
 
 default: all
-all: main
+all: parse_gaps
+
+parse_gaps: parse_gaps.o
+	$(CXX) $(LDFLAGS) -o $@ $<
 
 main: main.o
 	$(CXX) $(LDFLAGS) -o $@ $<
