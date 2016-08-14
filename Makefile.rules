@@ -1,6 +1,6 @@
 SRC=../src
 CXX=g++
-CXXFLAGS+=-I../seqan/include -I../include -std=gnu++11 -DSEQAN_HAS_ZLIB=1
+CXXFLAGS+=-I../include -std=gnu++11 -DSEQAN_HAS_ZLIB=1
 LDFLAGS+=-lz
 
 default: all
