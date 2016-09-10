@@ -5,7 +5,7 @@
 #ifndef PARSE_GAPS_H_
 #define PARSE_GAPS_H_
 
-// Returns n! (the factorial of n).  For negative n, n! is defined to be 1.
-int Factorial(int n);
+// Returns length of the first deletion or insertion in the given CIGAR string.
+int ParseCigar(char* cigar);
 
 #endif  // PARSE_GAPS_H_
